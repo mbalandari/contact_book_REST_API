@@ -49,5 +49,20 @@ def create_contact():
     return new_contact
 
 
+# Update of crUd
+@app.put("/contacts/<id>")
+def update_contact(id):
+    for contact in contacts:
+        if contact["id"] == id:
+            contact["name"] = (
+                request.json["name"] if "name" in request.json else contact["name"]
+            )
+            contact["phone"] = (
+                request.json["phone"] if "phone" in request.json else contact["phone"]
+            )
+        return contact
+    return "There is no contact with that id!"
+
+
 if __name__ == "__main__":
     app.run(debug=True)
