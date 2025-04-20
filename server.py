@@ -64,5 +64,15 @@ def update_contact(id):
     return "There is no contact with that id!"
 
 
+# Delete of cruD
+@app.delete("/contacts/<id>")
+def delete_contact(id):
+    for contact in contacts:
+        if contact["id"] == id:
+            contacts.remove(contact)
+            return contact
+    return "There is no contact with that id!"
+
+
 if __name__ == "__main__":
     app.run(debug=True)
