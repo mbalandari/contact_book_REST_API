@@ -11,3 +11,13 @@ contacts = [
 ]
 
 next_id = 5
+
+
+@app.route("/")
+def home():
+    print("I've received a request on the homepage endpoint!")
+    return "<h1 style='color:green'>Contact List</h1> <hr> </br> <a href='/contacts'>The list</a>"
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
