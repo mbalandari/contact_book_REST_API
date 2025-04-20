@@ -19,13 +19,13 @@ def home():
     return "<h1 style='color:green'>Contact List</h1> <hr> </br> <a href='/contacts'>The list</a>"
 
 
-# cRud
+# Read of cRud
 @app.get("/contacts")
 def list_contacts():
     return contacts
 
 
-# cRud
+# Read of cRud
 @app.get("/contacts/<id>")
 def read_single_contact(id):
     for contact in contacts:
@@ -33,6 +33,20 @@ def read_single_contact(id):
             return contact
 
     return "That contact does not exist!"
+
+
+# Create of Crud
+@app.post("/contacts")
+def create_contact():
+    global next_id
+    new_contact = {
+        "name": request.json["name"],
+        "phone": request.json["phone"],
+        "id": f"{next_id}",
+    }
+    contacts.append(new_contact)
+    next_id += 1
+    return new_contact
 
 
 if __name__ == "__main__":
