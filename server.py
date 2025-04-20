@@ -60,7 +60,7 @@ def update_contact(id):
             contact["phone"] = (
                 request.json["phone"] if "phone" in request.json else contact["phone"]
             )
-        return contact
+            return contact
     return "There is no contact with that id!"
 
 
